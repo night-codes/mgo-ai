@@ -45,7 +45,7 @@ func Next(name string) uint64 {
 	}, &result); err != nil {
 		fmt.Println("Autoincrement error(1):", err.Error())
 	}
-	sec, _ := result[ai.seqFieldName].(int)
+	sec, _ := result[seqFieldName].(int)
 	return uint64(sec)
 }
 
