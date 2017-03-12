@@ -4,7 +4,7 @@ Package **ai** implements AutoIncrement methods for mgo(golang)
 ## How To Install
 
 ```
-go get github.com/mirrr/mgo-ai
+go get github.com/night-codes/mgo-ai
 ```
 
 ## Getting Started
@@ -13,7 +13,7 @@ go get github.com/mirrr/mgo-ai
 package main
 
 import (
-    "github.com/mirrr/mgo-ai"
+    "github.com/night-codes/mgo-ai"
     "gopkg.in/mgo.v2"
     "gopkg.in/mgo.v2/bson"
 )
@@ -32,7 +32,7 @@ func main() {
     // use AutoIncrement
     session.DB("example-db").C("users").Insert(bson.M{
         "_id":   ai.Next("users"),
-        "login": "mirrr",
+        "login": "test",
         "age":   32,
     })
 }
