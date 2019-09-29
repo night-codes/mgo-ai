@@ -45,8 +45,14 @@ func Next(name string) uint64 {
 	}, &result); err != nil {
 		fmt.Println("Autoincrement error(1):", err.Error())
 	}
-	sec, _ := result[seqFieldName].(int)
-	return uint64(sec)
+
+	sec, ok := result[seqFieldName].(int)
+	if ok {
+		return uint64(sec)
+	}
+
+	sec2, _ := result[seqFieldName].(int64)
+	return uint64(sec2)
 }
 
 // Cancel is decrement counter value
@@ -91,8 +97,14 @@ func (ai *AI) Next(name string) uint64 {
 	}, &result); err != nil {
 		fmt.Println("Autoincrement error(1):", err.Error())
 	}
-	sec, _ := result[ai.seqFieldName].(int)
-	return uint64(sec)
+
+	sec, ok := result[ai.seqFieldName].(int)
+	if ok {
+		return uint64(sec)
+	}
+
+	sec2, _ := result[ai.seqFieldName].(int64)
+	return uint64(sec2)
 }
 
 // Cancel is decrement counter value
